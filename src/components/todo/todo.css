@@ -12,7 +12,7 @@
 .todo-new{
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
 }
 .todo-data{
@@ -52,4 +52,7 @@
     .logo {
       animation: logo-spin infinite 20s linear;
     }
+  }
+  button{
+    cursor: pointer;
   }

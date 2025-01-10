@@ -1,7 +1,11 @@
-const ToDoData = () => {
+const ToDoData = (props) => {
+    //console.log(props);
+    const { age, todoList } = props;
+
     return (
         <div className='todo-data'>
-            <div>React</div>
+            <div>{JSON.stringify(props.todoList)}</div>
+
         </div>
     )
 }
