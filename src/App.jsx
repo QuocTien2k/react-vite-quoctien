@@ -5,31 +5,33 @@ import reactLogo from './assets/react.svg'
 import { useState } from 'react'
 const App = () => {
 
-  const age = 25;
-
   const [todoList, setTodoList] = useState([
-    {
-      id: 1,
-      name: 'React'
-    },
-    {
-      id: 2,
-      name: 'Vue'
-    },
-    {
-      id: 3,
-      name: 'Angular'
-    }
+
   ]);
+
+  const addNewTodo = (name) => {
+    const newTodo = {
+      id: randomFromInterval(1, 1000), // Tạo một id ngẫu nhiên
+      name: name
+    }
+    setTodoList([...todoList, newTodo]); // Thêm phần tử mới vào mảng
+  };
+
+  const randomFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min); // Trả về một số ngẫu nhiên trong khoảng từ min đến max
+  }
 
   return (
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
-      <TodoNew />
-      <TodoData age={age} todoList={todoList} />
-      <div className="todo-image">
-        <img src={reactLogo} className="logo" />
-      </div>
+      <TodoNew addNewTodo={addNewTodo} />
+      {todoList.length > 0 ?
+        <TodoData todoList={todoList} />
+        :
+        <div className="todo-image">
+          <img src={reactLogo} className="logo" />
+        </div>
+      }
     </div>
   )
 }
